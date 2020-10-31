@@ -1,5 +1,4 @@
 E:\College files\L6\Semester I\ASE\Calculator\obj\Debug\Calculator.csprojAssemblyReference.cache
-E:\College files\L6\Semester I\ASE\Calculator\obj\Debug\Calculator.Form1.resources
 E:\College files\L6\Semester I\ASE\Calculator\obj\Debug\Calculator.csproj.GenerateResource.cache
 E:\College files\L6\Semester I\ASE\Calculator\bin\Debug\Calculator.exe.config
 E:\College files\L6\Semester I\ASE\Calculator\bin\Debug\Calculator.exe
@@ -8,3 +7,4 @@ E:\College files\L6\Semester I\ASE\Calculator\obj\Debug\Calculator.Properties.Re
 E:\College files\L6\Semester I\ASE\Calculator\obj\Debug\Calculator.csproj.CoreCompileInputs.cache
 E:\College files\L6\Semester I\ASE\Calculator\obj\Debug\Calculator.exe
 E:\College files\L6\Semester I\ASE\Calculator\obj\Debug\Calculator.pdb
+E:\College files\L6\Semester I\ASE\Calculator\obj\Debug\Calculator.calculator.resources

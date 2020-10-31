@@ -46,16 +46,21 @@
             this.zero = new System.Windows.Forms.Button();
             this.divide = new System.Windows.Forms.Button();
             this.equalTo = new System.Windows.Forms.Button();
+            this.backspace = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // screen
             // 
+            this.screen.Enabled = false;
+            this.screen.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.screen.Location = new System.Drawing.Point(0, 1);
             this.screen.Multiline = true;
             this.screen.Name = "screen";
+            this.screen.ReadOnly = true;
             this.screen.Size = new System.Drawing.Size(367, 123);
             this.screen.TabIndex = 0;
             this.screen.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.screen.WordWrap = false;
             // 
             // multiply
             // 
@@ -67,6 +72,7 @@
             this.multiply.TabIndex = 4;
             this.multiply.Text = "*";
             this.multiply.UseVisualStyleBackColor = true;
+            this.multiply.Click += new System.EventHandler(this.buttonClick);
             // 
             // nine
             // 
@@ -78,6 +84,7 @@
             this.nine.TabIndex = 5;
             this.nine.Text = "9";
             this.nine.UseVisualStyleBackColor = true;
+            this.nine.Click += new System.EventHandler(this.buttonClick);
             // 
             // seven
             // 
@@ -89,6 +96,7 @@
             this.seven.TabIndex = 6;
             this.seven.Text = "7";
             this.seven.UseVisualStyleBackColor = true;
+            this.seven.Click += new System.EventHandler(this.buttonClick);
             // 
             // eight
             // 
@@ -100,6 +108,7 @@
             this.eight.TabIndex = 7;
             this.eight.Text = "8";
             this.eight.UseVisualStyleBackColor = true;
+            this.eight.Click += new System.EventHandler(this.buttonClick);
             // 
             // clear
             // 
@@ -107,10 +116,11 @@
             this.clear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clear.Location = new System.Drawing.Point(1, 127);
             this.clear.Name = "clear";
-            this.clear.Size = new System.Drawing.Size(365, 58);
+            this.clear.Size = new System.Drawing.Size(182, 58);
             this.clear.TabIndex = 8;
             this.clear.Text = "C";
             this.clear.UseVisualStyleBackColor = true;
+            this.clear.Click += new System.EventHandler(this.clear_Click);
             // 
             // five
             // 
@@ -122,6 +132,7 @@
             this.five.TabIndex = 12;
             this.five.Text = "5";
             this.five.UseVisualStyleBackColor = true;
+            this.five.Click += new System.EventHandler(this.buttonClick);
             // 
             // four
             // 
@@ -133,6 +144,7 @@
             this.four.TabIndex = 11;
             this.four.Text = "4";
             this.four.UseVisualStyleBackColor = true;
+            this.four.Click += new System.EventHandler(this.buttonClick);
             // 
             // six
             // 
@@ -144,6 +156,7 @@
             this.six.TabIndex = 10;
             this.six.Text = "6";
             this.six.UseVisualStyleBackColor = true;
+            this.six.Click += new System.EventHandler(this.buttonClick);
             // 
             // minus
             // 
@@ -155,6 +168,7 @@
             this.minus.TabIndex = 9;
             this.minus.Text = "-";
             this.minus.UseVisualStyleBackColor = true;
+            this.minus.Click += new System.EventHandler(this.buttonClick);
             // 
             // two
             // 
@@ -166,6 +180,7 @@
             this.two.TabIndex = 16;
             this.two.Text = "2";
             this.two.UseVisualStyleBackColor = true;
+            this.two.Click += new System.EventHandler(this.buttonClick);
             // 
             // one
             // 
@@ -177,6 +192,7 @@
             this.one.TabIndex = 15;
             this.one.Text = "1";
             this.one.UseVisualStyleBackColor = true;
+            this.one.Click += new System.EventHandler(this.buttonClick);
             // 
             // three
             // 
@@ -188,6 +204,7 @@
             this.three.TabIndex = 14;
             this.three.Text = "3";
             this.three.UseVisualStyleBackColor = true;
+            this.three.Click += new System.EventHandler(this.buttonClick);
             // 
             // plus
             // 
@@ -199,6 +216,7 @@
             this.plus.TabIndex = 13;
             this.plus.Text = "+";
             this.plus.UseVisualStyleBackColor = true;
+            this.plus.Click += new System.EventHandler(this.buttonClick);
             // 
             // point
             // 
@@ -210,6 +228,7 @@
             this.point.TabIndex = 20;
             this.point.Text = ".";
             this.point.UseVisualStyleBackColor = true;
+            this.point.Click += new System.EventHandler(this.buttonClick);
             // 
             // zero
             // 
@@ -221,6 +240,7 @@
             this.zero.TabIndex = 19;
             this.zero.Text = "0";
             this.zero.UseVisualStyleBackColor = true;
+            this.zero.Click += new System.EventHandler(this.buttonClick);
             // 
             // divide
             // 
@@ -232,6 +252,7 @@
             this.divide.TabIndex = 18;
             this.divide.Text = "/";
             this.divide.UseVisualStyleBackColor = true;
+            this.divide.Click += new System.EventHandler(this.buttonClick);
             // 
             // equalTo
             // 
@@ -244,11 +265,25 @@
             this.equalTo.Text = "=";
             this.equalTo.UseVisualStyleBackColor = true;
             // 
+            // backspace
+            // 
+            this.backspace.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.backspace.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.backspace.Location = new System.Drawing.Point(184, 127);
+            this.backspace.Name = "backspace";
+            this.backspace.Size = new System.Drawing.Size(182, 58);
+            this.backspace.TabIndex = 21;
+            this.backspace.Text = "←";
+            this.backspace.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.backspace.UseVisualStyleBackColor = true;
+            this.backspace.Click += new System.EventHandler(this.backspace_Click);
+            // 
             // calculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(367, 430);
+            this.Controls.Add(this.backspace);
             this.Controls.Add(this.point);
             this.Controls.Add(this.zero);
             this.Controls.Add(this.divide);
@@ -294,6 +329,7 @@
         private System.Windows.Forms.Button zero;
         private System.Windows.Forms.Button divide;
         private System.Windows.Forms.Button equalTo;
+        private System.Windows.Forms.Button backspace;
     }
 }
 
