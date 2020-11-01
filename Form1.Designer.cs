@@ -264,6 +264,7 @@
             this.equalTo.TabIndex = 17;
             this.equalTo.Text = "=";
             this.equalTo.UseVisualStyleBackColor = true;
+            this.equalTo.Click += new System.EventHandler(this.equalTo_Click);
             // 
             // backspace
             // 

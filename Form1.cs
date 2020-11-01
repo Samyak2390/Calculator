@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -15,6 +18,7 @@ namespace Calculator
         private string newLines = string.Concat(Enumerable.Repeat("\r\n", 1));
         private string initialValue = "0";
         private string changedValue = "";
+        
         public calculator()
         {
             InitializeComponent();
@@ -49,6 +53,42 @@ namespace Calculator
         {
             changedValue = "";
             showScreen(initialValue);
+        }
+
+        private string compute(string value)
+        {
+            ArrayList tokens = tokenize(value);
+            return "";
+        }
+
+        private ArrayList tokenize(string value)
+        {
+            string buffer = "";
+            ArrayList tokens = new ArrayList();
+
+            foreach (char c in value)
+            {
+                if (Regex.IsMatch(c.ToString(), @"\+|-|\*|\/"))
+                {
+                    if(buffer.Length > 0) tokens.Add(buffer);
+                    buffer = "";
+                    tokens.Add(c.ToString());
+                }
+                else
+                {
+                    buffer += c.ToString();
+                }
+            }
+            tokens.Add(buffer);
+            buffer = "";
+            return tokens;
+        }
+
+        private void equalTo_Click(object sender, EventArgs e)
+        {
+            string result = compute(changedValue);
+            showScreen(result);
+            changedValue = "";
         }
     }
 }
