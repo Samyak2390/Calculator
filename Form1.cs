@@ -18,6 +18,13 @@ namespace Calculator
         private string newLines = string.Concat(Enumerable.Repeat("\r\n", 1));
         private string initialValue = "0";
         private string changedValue = "";
+        Dictionary<string, int>  precedence = new Dictionary<string, int>
+        {
+            {"/", 4},
+            {"*", 3},
+            {"-", 2},
+            {"+", 1}
+        };
         
         public calculator()
         {
@@ -58,7 +65,9 @@ namespace Calculator
         private string compute(string value)
         {
             ArrayList tokens = tokenize(value);
-            return "";
+            Queue postfix = postfixTokens(tokens);
+            double result = parsePostfix(postfix);
+            return result.ToString();
         }
 
         private ArrayList tokenize(string value)
@@ -82,6 +91,79 @@ namespace Calculator
             tokens.Add(buffer);
             buffer = "";
             return tokens;
+        }
+
+        private Queue postfixTokens(ArrayList tokens)
+        {
+            Queue myQueue = new Queue();
+            Stack myStack = new Stack();
+            foreach (var token in tokens)
+            {
+                if (Regex.IsMatch((string)token, @"\+|-|\*|\/"))
+                {
+                    if(myStack.Count > 0)
+                    {
+                        if (precedence[(string)myStack.Peek()] > precedence[(string)token])
+                        {
+                            myQueue.Enqueue(myStack.Pop());
+                        }
+                        myStack.Push(token);
+                    }
+                    else
+                    {
+                        myStack.Push(token);
+                    }
+                }
+                else
+                {
+                    myQueue.Enqueue(token);
+                }
+
+            }
+
+            while(myStack.Count > 0)
+            {
+                myQueue.Enqueue(myStack.Pop());
+            }
+
+            return myQueue;
+        }
+
+        private double parsePostfix(Queue postfix)
+        {
+            Stack stack = new Stack();
+
+            foreach(string value in postfix)
+            {
+                if(Regex.IsMatch(value, @"\+|-|\*|\/"))
+                {
+                    double rightOperand = (double)stack.Pop();
+                    double leftOperand = (double)stack.Pop();
+
+                    switch (value)
+                    {
+                        case "+":
+                            stack.Push((leftOperand + rightOperand));
+                            continue;
+                        case "-":
+                            stack.Push((leftOperand - rightOperand));
+                            continue;
+                        case "*":
+                            stack.Push((leftOperand * rightOperand));
+                            continue;
+                        case "/":
+                            stack.Push((leftOperand / rightOperand));
+                            continue;
+                    }
+
+                }
+                else
+                {
+                    stack.Push(Convert.ToDouble(value));
+                }
+            }
+
+            return (double)stack.Pop();
         }
 
         private void equalTo_Click(object sender, EventArgs e)
