@@ -34,7 +34,7 @@ namespace Calculator
 
         public void showScreen(string value)
         {
-            screen.Text = newLines + value;
+            screen.Text = "\r\n" + value;
         }
 
         private void buttonClick(object sender, EventArgs e)
@@ -64,9 +64,18 @@ namespace Calculator
 
         private string compute(string value)
         {
-            ArrayList tokens = tokenize(value);
-            Queue postfix = postfixTokens(tokens);
-            double result = parsePostfix(postfix);
+            double result;
+            try
+            {
+                ArrayList tokens = tokenize(value);
+                Queue postfix = postfixTokens(tokens);
+                result = parsePostfix(postfix);
+            }
+            catch(Exception e)
+            {
+                return "Invalid!";
+            }
+            
             return result.ToString();
         }
 
